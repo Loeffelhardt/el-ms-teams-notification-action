@@ -4,8 +4,7 @@ on: # rebuild any PRs and main branch changes
   pull_request:
   push:
     branches:
-      - master
-      - 'releases/*'
+      - main
 
 jobs:
   build: # make sure build/ci work properly
@@ -23,34 +22,27 @@ jobs:
       with: 
         github-token: ${{ github.token }}
         ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-        notification-summary: Deployment Started 
+        notification-summary: CI Info (el-ms-teams-notification-action)
         notification-color: 17a2b8
-        timezone: America/Denver 
+        timezone: Europe/Berlin
     - uses: ./
       with: 
         github-token: ${{ github.token }}
         ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-        notification-summary: Warning! Something Not Quite Right 
+        notification-summary: CI Warning (el-ms-teams-notification-action)
         notification-color: ffc107
-        timezone: America/Denver 
+        timezone: Europe/Berlin
     - uses: ./
       with: 
         github-token: ${{ github.token }}
         ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-        notification-summary: OMG!! Something Exploded
+        notification-summary: CI Failure (el-ms-teams-notification-action)
         notification-color: dc3545
-        timezone: America/Denver 
+        timezone: Europe/Berlin
     - uses: ./
       with: 
         github-token: ${{ github.token }}
         ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-        notification-summary: Whew! Everything is right with the world again! 
+        notification-summary: CI Success (el-ms-teams-notification-action)
         notification-color: 28a745 
-        timezone: America/Denver 
-    - uses: ./
-      with: 
-        github-token: ${{ github.token }}
-        ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-        notification-summary: "Emojify! &#x1F6A2​​ &#x2705;"
-        notification-color: 28a745 
-        timezone: America/Denver 
+        timezone: Europe/Berlin
