@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/jdcargile/ms-teams-notification/actions"><img alt="ms-teams-notification status" src="https://github.com/jdcargile/ms-teams-notification/workflows/Build%20&%20Test/badge.svg"></a>
+  <a href="https://github.com/Loeffelhardt/el-ms-teams-notification-action/actions"><img alt="ms-teams-notification status" src="https://github.com/Loeffelhardt/el-ms-teams-notification-action/workflows/Build%20&%20Test/badge.svg"></a>
 </p>
 
 # Microsoft Teams Notification 
@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v2
       # this is the new step using the ms-teams-notification action
       - name: Notify dedicated teams channel
-        uses: cinch-labs/ms-teams-notification@v1.4
+        uses: Loeffelhardt/el-ms-teams-notification-action@v1.4
         with:
           github-token: ${{ github.token }} # this will use the runner's token.
           ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
