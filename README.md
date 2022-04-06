@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v2
       # this is the new step using the ms-teams-notification action
       - name: Notify dedicated teams channel
-        uses: Loeffelhardt/el-ms-teams-notification-action@v1.4
+        uses: Loeffelhardt/el-ms-teams-notification-action@main
         with:
           github-token: ${{ github.token }} # this will use the runner's token.
           ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
