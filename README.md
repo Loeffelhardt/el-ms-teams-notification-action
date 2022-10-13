@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       # this is the new step using the ms-teams-notification action
       - name: Notify dedicated teams channel
         uses: Loeffelhardt/el-ms-teams-notification-action@main
