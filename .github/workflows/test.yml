@@ -10,39 +10,30 @@ jobs:
   build: # make sure build/ci work properly
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - run: |
-        npm install
-        npm run all
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.19.0
+
+      - run: |
+          npm install
+          npm run all
   test: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: ./
-      with: 
-        github-token: ${{ github.token }}
-        ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-        notification-summary: CI Info (el-ms-teams-notification-action)
-        notification-color: 17a2b8
-        timezone: Europe/Berlin
-    - uses: ./
-      with: 
-        github-token: ${{ github.token }}
-        ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-        notification-summary: CI Warning (el-ms-teams-notification-action)
-        notification-color: ffc107
-        timezone: Europe/Berlin
-    - uses: ./
-      with: 
-        github-token: ${{ github.token }}
-        ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-        notification-summary: CI Failure (el-ms-teams-notification-action)
-        notification-color: dc3545
-        timezone: Europe/Berlin
-    - uses: ./
-      with: 
-        github-token: ${{ github.token }}
-        ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-        notification-summary: CI Success (el-ms-teams-notification-action)
-        notification-color: 28a745 
-        timezone: Europe/Berlin
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.19.0
+
+      - uses: ./
+        with:
+          github-token: ${{ github.token }}
+          ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          notification-summary: Testing changes to el-ms-teams-notification-action
+          notification-color: 17a2b8
+          timezone: Europe/Berlin
